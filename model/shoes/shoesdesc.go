@@ -2,7 +2,8 @@ package shoes
 
 import "time"
 
-type ShoesDesc struct {
+type ShoesDescription struct {
+	ID          int       `json:"id"`
 	ShoesID     int       `json:"shoes_id"`
 	Description string    `json:"desc"`
 	Color       string    `json:"color"`

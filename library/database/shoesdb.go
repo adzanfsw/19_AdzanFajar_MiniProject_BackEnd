@@ -31,3 +31,12 @@ func AddShoesBrand(shoes shoe.ShoesBrand) (*shoe.ShoesBrand, error) {
 
 	return &shoes, nil
 }
+
+func AddShoesDescription(shoes shoe.ShoesDescription) (*shoe.ShoesDescription, error) {
+
+	if err := config.DB.Save(&shoes).Error; err != nil {
+		return &shoe.ShoesDescription{}, err
+	}
+
+	return &shoes, nil
+}

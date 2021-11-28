@@ -28,5 +28,6 @@ func AutoMigrate() {
 		&shoes.Shoes{},
 		&shoes.ShoesType{},
 		&shoes.ShoesBrand{},
+		&shoes.ShoesDescription{},
 	)
 }
