@@ -1,7 +1,7 @@
 package config
 
 import (
-	"justrun/features/shoes"
+	"justrun/model/shoes"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -13,7 +13,7 @@ func InitDB() {
 
 	var err error
 
-	db, err := gorm.Open(mysql.Open("root:@/justrun"), &gorm.Config{})
+	db, err := gorm.Open(mysql.Open("root:@/sepatu"), &gorm.Config{})
 
 	if err != nil {
 		panic(err)
