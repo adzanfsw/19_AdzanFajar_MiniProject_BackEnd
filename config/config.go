@@ -27,5 +27,6 @@ func AutoMigrate() {
 	DB.AutoMigrate(
 		&shoes.Shoes{},
 		&shoes.ShoesType{},
+		&shoes.ShoesBrand{},
 	)
 }

@@ -2,8 +2,8 @@ package shoes
 
 import "time"
 
-type ShoesType struct {
+type ShoesBrand struct {
 	ID        int
-	Type      string
+	Brand     string
 	CreatedAt time.Time
 }
