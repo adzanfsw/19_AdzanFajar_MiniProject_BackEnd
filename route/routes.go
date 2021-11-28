@@ -15,5 +15,7 @@ func RouteShoes() *echo.Echo {
 	e.POST("/api/shoes-brand/add", controller.AddShoesBrandController)
 	e.POST("/api/shoes-desc/add", controller.AddShoesDescController)
 
+	e.POST("/api/user/add", controller.AddUsersController)
+
 	return e
 }
