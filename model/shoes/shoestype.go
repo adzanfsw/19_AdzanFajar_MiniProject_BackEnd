@@ -3,7 +3,7 @@ package shoes
 import "time"
 
 type ShoesType struct {
-	ID        int
-	Type      string
-	CreatedAt time.Time
+	ID        int       `json:"id"`
+	Type      string    `json:"type"`
+	CreatedAt time.Time `json:"created_at"`
 }
