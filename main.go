@@ -2,6 +2,7 @@ package main
 
 import (
 	"justrun/config"
+	"justrun/route"
 )
 
 func main() {
@@ -9,6 +10,6 @@ func main() {
 	config.InitDB()
 	config.AutoMigrate()
 
-	e := routes.RouteShoes()
+	e := route.RouteShoes()
 	e.Start(":3000")
 }

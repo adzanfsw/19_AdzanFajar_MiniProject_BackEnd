@@ -13,7 +13,7 @@ func InitDB() {
 
 	var err error
 
-	db, err := gorm.Open(mysql.Open("root:@/sepatu"), &gorm.Config{})
+	db, err := gorm.Open(mysql.Open("root:@/justrun"), &gorm.Config{})
 
 	if err != nil {
 		panic(err)
