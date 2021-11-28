@@ -4,6 +4,6 @@ import "time"
 
 type ShoesType struct {
 	ID        int
-	Name      string
+	Type      string `json:"type"`
 	CreatedAt time.Time
 }

@@ -23,5 +23,9 @@ func InitDB() {
 }
 
 func AutoMigrate() {
-	DB.AutoMigrate(&shoes.Shoes{})
+
+	DB.AutoMigrate(
+		&shoes.Shoes{},
+		&shoes.ShoesType{},
+	)
 }
