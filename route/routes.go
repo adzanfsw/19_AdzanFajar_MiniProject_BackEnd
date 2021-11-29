@@ -17,5 +17,7 @@ func RouteShoes() *echo.Echo {
 
 	e.POST("/api/user/add", controller.AddUsersController)
 
+	e.GET("/api/shoes", controller.GetShoesController)
+
 	return e
 }
