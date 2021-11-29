@@ -20,7 +20,7 @@ func RouteShoes() *echo.Echo {
 
 	e.PUT("/api/shoes/update/:id", controller.UpdateShoesController)
 
-	// e.DELETE("api/shoes/delete", controller.DeleteShoesController)
+	e.DELETE("/api/shoes/delete/:id", controller.DeleteShoesController)
 
 	return e
 }

@@ -66,21 +66,21 @@ func UpdateShoesController(echoContext echo.Context) error {
 	})
 }
 
-// func DeleteShoesController(echoContext echo.Context) error {
+func DeleteShoesController(echoContext echo.Context) error {
 
-// 	id, _ := strconv.Atoi(echoContext.Param("id"))
+	id, _ := strconv.Atoi(echoContext.Param("id"))
 
-// 	shoes, err := database.DeleteShoes(id)
+	shoes, err := database.DeleteShoes(id)
 
-// 	if err != nil {
-// 		return echoContext.JSON(http.StatusInternalServerError, map[string]interface{}{
-// 			"status":   "err",
-// 			"messages": err,
-// 		})
-// 	}
+	if err != nil {
+		return echoContext.JSON(http.StatusInternalServerError, map[string]interface{}{
+			"status":   "err",
+			"messages": err,
+		})
+	}
 
-// 	return echoContext.JSON(http.StatusOK, map[string]interface{}{
-// 		"status": "success",
-// 		"data":   shoes,
-// 	})
-// }
+	return echoContext.JSON(http.StatusOK, map[string]interface{}{
+		"status": "success",
+		"data":   shoes,
+	})
+}

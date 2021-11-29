@@ -34,13 +34,13 @@ func UpdateShoes(id int, s shoe.Shoes) (*shoe.Shoes, error) {
 	return &s, nil
 }
 
-// func DeleteShoes(id int) (*shoe.Shoes, error) {
+func DeleteShoes(id int) (*shoe.Shoes, error) {
 
-// 	var sepatu shoe.Shoes
+	var sepatu shoe.Shoes
 
-// 	if err := config.DB.Where("id = ?", id).Delete(&sepatu).Error; err != nil {
-// 		return &shoe.Shoes{}, err
-// 	}
+	if err := config.DB.Where("id = ?", id).Delete(&sepatu).Error; err != nil {
+		return &shoe.Shoes{}, err
+	}
 
-// 	return &sepatu, nil
-// }
+	return &sepatu, nil
+}
