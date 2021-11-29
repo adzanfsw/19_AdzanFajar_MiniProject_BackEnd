@@ -24,3 +24,12 @@ func GetReviews() (*[]review.Review, error) {
 
 	return &revi, nil
 }
+
+func UpdateReview(id int, re review.Review) (*review.Review, error) {
+
+	if err := config.DB.Where("id = ?", id).Updates(&re).Error; err != nil {
+		return &review.Review{}, err
+	}
+
+	return &re, nil
+}
