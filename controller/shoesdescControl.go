@@ -1,20 +1,19 @@
 package controller
 
 import (
-	"net/http"
-
 	"justrun/database"
 	"justrun/model/shoes"
+	"net/http"
 
 	"github.com/labstack/echo/v4"
 )
 
-func AddShoesController(echoContext echo.Context) error {
+func AddShoesDescController(echoContext echo.Context) error {
 
-	var shoeReq shoes.Shoes
-	echoContext.Bind(&shoeReq)
+	var descReq shoes.ShoesDescription
+	echoContext.Bind(&descReq)
 
-	result, err := database.AddShoes(shoeReq)
+	result, err := database.AddShoesDescription(descReq)
 	if err != nil {
 		return echoContext.JSON(http.StatusInternalServerError, map[string]interface{}{
 			"status":   "err",

@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"justrun/library/database"
+	"justrun/database"
 	"justrun/model/users"
 	"net/http"
 
