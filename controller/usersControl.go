@@ -62,3 +62,42 @@ func UserbyIDController(echoContext echo.Context) error {
 		"user":   users,
 	})
 }
+
+func UpdateUsersController(echoContext echo.Context) error {
+
+	id, _ := strconv.Atoi(echoContext.Param("id"))
+
+	var userReq users.Users
+	echoContext.Bind(&userReq)
+
+	result, err := database.UpdateUsers(id, userReq)
+	if err != nil {
+		return echoContext.JSON(http.StatusInternalServerError, map[string]interface{}{
+			"status":   "err",
+			"messages": err,
+		})
+	}
+	return echoContext.JSON(http.StatusOK, map[string]interface{}{
+		"status": "Update Success",
+		"data":   result,
+	})
+}
+
+func DeleteUsersController(echoContext echo.Context) error {
+
+	id, _ := strconv.Atoi(echoContext.Param("id"))
+
+	users, err := database.DeleteUsers(id)
+
+	if err != nil {
+		return echoContext.JSON(http.StatusInternalServerError, map[string]interface{}{
+			"status":   "err",
+			"messages": err,
+		})
+	}
+
+	return echoContext.JSON(http.StatusOK, map[string]interface{}{
+		"status": "success",
+		"data":   users,
+	})
+}

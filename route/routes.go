@@ -22,8 +22,10 @@ func RouteShoes() *echo.Echo {
 	e.GET("/api/users/:id", controller.UserbyIDController)
 
 	e.PUT("/api/shoes/update/:id", controller.UpdateShoesController)
+	e.PUT("/api/users/update/:id", controller.UpdateUsersController)
 
 	e.DELETE("/api/shoes/delete/:id", controller.DeleteShoesController)
+	e.DELETE("/api/users/delete/:id", controller.DeleteUsersController)
 
 	return e
 }
