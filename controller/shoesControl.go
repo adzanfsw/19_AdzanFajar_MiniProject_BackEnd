@@ -46,6 +46,24 @@ func GetShoesController(echoContext echo.Context) error {
 	})
 }
 
+func ShoesbyIDController(echoContext echo.Context) error {
+
+	id, _ := strconv.Atoi(echoContext.Param("id"))
+
+	shoes, err := database.ShoesByID(id)
+	if err != nil {
+		return echoContext.JSON(http.StatusInternalServerError, map[string]interface{}{
+			"status":   "err",
+			"messages": err,
+		})
+	}
+
+	return echoContext.JSON(http.StatusOK, map[string]interface{}{
+		"status": "Success",
+		"shoe":   shoes,
+	})
+}
+
 func UpdateShoesController(echoContext echo.Context) error {
 
 	id, _ := strconv.Atoi(echoContext.Param("id"))

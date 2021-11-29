@@ -25,6 +25,16 @@ func GetShoes() (*[]shoe.Shoes, error) {
 	return &shoes, nil
 }
 
+func ShoesByID(id int) (*shoe.Shoes, error) {
+	var sho shoe.Shoes
+
+	if err := config.DB.Where("id = ?", id).First(&sho).Error; err != nil {
+		return &shoe.Shoes{}, err
+	}
+
+	return &sho, nil
+}
+
 func UpdateShoes(id int, s shoe.Shoes) (*shoe.Shoes, error) {
 
 	if err := config.DB.Where("id = ?", id).Updates(&s).Error; err != nil {
