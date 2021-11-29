@@ -15,6 +15,8 @@ func RouteShoes() *echo.Echo {
 	e.POST("/api/shoes-brand/add", controller.AddShoesBrandController)
 	e.POST("/api/shoes-desc/add", controller.AddShoesDescController)
 	e.POST("/api/user/add", controller.AddUsersController)
+	e.POST("/api/wishlist/add", controller.AddWishController)
+	e.POST("/api/reviews/add", controller.)
 
 	e.GET("/api/shoes", controller.GetShoesController)
 	e.GET("/api/shoes/:id", controller.ShoesbyIDController)

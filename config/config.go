@@ -3,6 +3,7 @@ package config
 import (
 	"justrun/model/shoes"
 	"justrun/model/users"
+	"justrun/model/wishlist"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -27,10 +28,15 @@ func AutoMigrate() {
 
 	DB.AutoMigrate(
 		&shoes.Shoes{},
+
 		&shoes.ShoesType{},
+
 		&shoes.ShoesBrand{},
+
 		&shoes.ShoesDescription{},
 
 		&users.Users{},
+
+		&wishlist.Wishlist{},
 	)
 }
