@@ -13,3 +13,14 @@ func AddReview(rev review.Review) (*review.Review, error) {
 
 	return &rev, nil
 }
+
+func GetReviews() (*[]review.Review, error) {
+
+	var revi []review.Review
+
+	if err := config.DB.Find(&revi).Error; err != nil {
+		return &[]review.Review{}, err
+	}
+
+	return &revi, nil
+}

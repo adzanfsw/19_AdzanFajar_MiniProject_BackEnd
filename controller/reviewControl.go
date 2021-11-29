@@ -26,3 +26,20 @@ func AddReviewController(echoContext echo.Context) error {
 		"status": "Success",
 	})
 }
+
+func GetReviewsController(echoContext echo.Context) error {
+
+	rev, err := database.GetReviews()
+
+	if err != nil {
+		return echoContext.JSON(http.StatusInternalServerError, map[string]interface{}{
+			"status":   "err",
+			"messages": err,
+		})
+	}
+
+	return echoContext.JSON(http.StatusOK, map[string]interface{}{
+		"status":  "Success",
+		"reviews": rev,
+	})
+}
