@@ -14,10 +14,13 @@ func RouteShoes() *echo.Echo {
 	e.POST("/api/shoes-type/add", controller.AddShoesTypeController)
 	e.POST("/api/shoes-brand/add", controller.AddShoesBrandController)
 	e.POST("/api/shoes-desc/add", controller.AddShoesDescController)
-
 	e.POST("/api/user/add", controller.AddUsersController)
 
 	e.GET("/api/shoes", controller.GetShoesController)
+
+	e.PUT("/api/shoes/update/:id", controller.UpdateShoesController)
+
+	// e.DELETE("api/shoes/delete", controller.DeleteShoesController)
 
 	return e
 }

@@ -2,6 +2,7 @@ package controller
 
 import (
 	"net/http"
+	"strconv"
 
 	"justrun/database"
 	"justrun/model/shoes"
@@ -44,3 +45,42 @@ func GetShoesController(echoContext echo.Context) error {
 		"shoes":  shoes,
 	})
 }
+
+func UpdateShoesController(echoContext echo.Context) error {
+
+	id, _ := strconv.Atoi(echoContext.Param("id"))
+
+	var shoeReq shoes.Shoes
+	echoContext.Bind(&shoeReq)
+
+	result, err := database.UpdateShoes(id, shoeReq)
+	if err != nil {
+		return echoContext.JSON(http.StatusInternalServerError, map[string]interface{}{
+			"status":   "err",
+			"messages": err,
+		})
+	}
+	return echoContext.JSON(http.StatusOK, map[string]interface{}{
+		"status": "Update Success",
+		"data":   result,
+	})
+}
+
+// func DeleteShoesController(echoContext echo.Context) error {
+
+// 	id, _ := strconv.Atoi(echoContext.Param("id"))
+
+// 	shoes, err := database.DeleteShoes(id)
+
+// 	if err != nil {
+// 		return echoContext.JSON(http.StatusInternalServerError, map[string]interface{}{
+// 			"status":   "err",
+// 			"messages": err,
+// 		})
+// 	}
+
+// 	return echoContext.JSON(http.StatusOK, map[string]interface{}{
+// 		"status": "success",
+// 		"data":   shoes,
+// 	})
+// }
