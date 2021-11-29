@@ -2,6 +2,7 @@ package database
 
 import (
 	"justrun/config"
+	"justrun/model/shoes"
 	shoe "justrun/model/shoes"
 )
 
@@ -12,4 +13,15 @@ func AddShoesType(shoes shoe.ShoesType) (*shoe.ShoesType, error) {
 	}
 
 	return &shoes, nil
+}
+
+func GetShoesType() (*[]shoes.ShoesType, error) {
+
+	var tipe []shoes.ShoesType
+
+	if err := config.DB.Find(&tipe).Error; err != nil {
+		return &[]shoes.ShoesType{}, err
+	}
+
+	return &tipe, nil
 }

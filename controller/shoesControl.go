@@ -41,7 +41,7 @@ func GetShoesController(echoContext echo.Context) error {
 	}
 
 	return echoContext.JSON(http.StatusOK, map[string]interface{}{
-		"status": "success",
+		"status": "Success",
 		"shoes":  shoes,
 	})
 }
@@ -98,7 +98,7 @@ func DeleteShoesController(echoContext echo.Context) error {
 	}
 
 	return echoContext.JSON(http.StatusOK, map[string]interface{}{
-		"status": "success",
+		"status": "Delete Success",
 		"data":   shoes,
 	})
 }

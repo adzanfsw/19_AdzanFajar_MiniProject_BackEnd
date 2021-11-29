@@ -26,3 +26,20 @@ func AddShoesTypeController(echoContext echo.Context) error {
 		"data":   result,
 	})
 }
+
+func GetShoesTypeController(echoContext echo.Context) error {
+
+	tipe, err := database.GetShoesType()
+
+	if err != nil {
+		return echoContext.JSON(http.StatusInternalServerError, map[string]interface{}{
+			"status":   "err",
+			"messages": err,
+		})
+	}
+
+	return echoContext.JSON(http.StatusOK, map[string]interface{}{
+		"status":     "Success",
+		"shoes type": tipe,
+	})
+}

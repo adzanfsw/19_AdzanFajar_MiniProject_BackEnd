@@ -26,3 +26,20 @@ func AddShoesDescController(echoContext echo.Context) error {
 		"data":   result,
 	})
 }
+
+func GetShoesDescController(echoContext echo.Context) error {
+
+	desc, err := database.GetShoesDesc()
+
+	if err != nil {
+		return echoContext.JSON(http.StatusInternalServerError, map[string]interface{}{
+			"status":   "err",
+			"messages": err,
+		})
+	}
+
+	return echoContext.JSON(http.StatusOK, map[string]interface{}{
+		"status":     "Success",
+		"shoes desc": desc,
+	})
+}
