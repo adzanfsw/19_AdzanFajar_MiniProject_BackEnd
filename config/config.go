@@ -1,6 +1,7 @@
 package config
 
 import (
+	"justrun/model/review"
 	"justrun/model/shoes"
 	"justrun/model/users"
 	"justrun/model/wishlist"
@@ -38,5 +39,7 @@ func AutoMigrate() {
 		&users.Users{},
 
 		&wishlist.Wishlist{},
+
+		&review.Review{},
 	)
 }

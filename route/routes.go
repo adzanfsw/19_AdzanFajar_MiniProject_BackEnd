@@ -16,10 +16,11 @@ func RouteShoes() *echo.Echo {
 	e.POST("/api/shoes-desc/add", controller.AddShoesDescController)
 	e.POST("/api/user/add", controller.AddUsersController)
 	e.POST("/api/wishlist/add", controller.AddWishController)
-	e.POST("/api/reviews/add", controller.)
+	e.POST("/api/reviews/add", controller.AddReviewController)
 
 	e.GET("/api/shoes", controller.GetShoesController)
 	e.GET("/api/shoes/:id", controller.ShoesbyIDController)
+
 	e.GET("/api/users", controller.GetUsersController)
 	e.GET("/api/users/:id", controller.UserbyIDController)
 
