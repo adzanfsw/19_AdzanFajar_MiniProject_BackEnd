@@ -1,9 +1,12 @@
 package route
 
 import (
+	"justrun/config"
 	"justrun/controller"
 
+	"github.com/golang-jwt/jwt"
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 func RouteShoes() *echo.Echo {
@@ -13,18 +16,25 @@ func RouteShoes() *echo.Echo {
 	auth := e.Group("auth")
 	auth.POST("/token", controller.AuthLogin)
 
-	e.POST("/api/shoes/add", controller.AddShoesController)
+	jwtAuth := e.Group("jwt")
+	jwtAuth.Use(middleware.JWTWithConfig(middleware.JWTConfig{
+		SigningMethod: jwt.SigningMethodHS256.Name,
+		SigningKey:    []byte(config.JwtSecret),
+	}))
+
+	jwtAuth.POST("/shoes/add", controller.AddShoesController)
+	jwtAuth.POST("/user/add", controller.AddUsersController)
+
 	e.POST("/api/shoes-brand/add", controller.AddShoesBrandController)
 	e.POST("/api/shoes-desc/add", controller.AddShoesDescController)
-	e.POST("/api/user/add", controller.AddUsersController)
 	e.POST("/api/wishlist/add", controller.AddWishController)
 	e.POST("/api/reviews/add", controller.AddReviewController)
 
-	e.GET("/api/shoes", controller.GetShoesController)
-	e.GET("/api/shoes/:id", controller.ShoesbyIDController)
+	jwtAuth.GET("/shoes", controller.GetShoesController)
+	jwtAuth.GET("/shoes/:id", controller.ShoesbyIDController)
 
-	e.GET("/api/users", controller.GetUsersController)
-	e.GET("/api/users/:id", controller.UserbyIDController)
+	jwtAuth.GET("/users", controller.GetUsersController)
+	jwtAuth.GET("/users/:id", controller.UserbyIDController)
 
 	e.GET("/api/shoes-brand", controller.GetShoesBrandController)
 	e.GET("/api/shoes-type", controller.GetShoesTypeController)
