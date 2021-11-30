@@ -10,8 +10,10 @@ func RouteShoes() *echo.Echo {
 
 	e := echo.New()
 
+	auth := e.Group("auth")
+	auth.POST("/token", controller.AuthLogin)
+
 	e.POST("/api/shoes/add", controller.AddShoesController)
-	e.POST("/api/shoes-type/add", controller.AddShoesTypeController)
 	e.POST("/api/shoes-brand/add", controller.AddShoesBrandController)
 	e.POST("/api/shoes-desc/add", controller.AddShoesDescController)
 	e.POST("/api/user/add", controller.AddUsersController)
