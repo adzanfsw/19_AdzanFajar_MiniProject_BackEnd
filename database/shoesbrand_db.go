@@ -25,3 +25,13 @@ func GetShoesBrand() (*[]shoes.ShoesBrand, error) {
 
 	return &merk, nil
 }
+
+func ShoesBrandID(id int) (*shoes.ShoesBrand, error) {
+	var bra shoes.ShoesBrand
+
+	if err := config.DB.Where("id = ?", id).First(&bra).Error; err != nil {
+		return &shoes.ShoesBrand{}, err
+	}
+
+	return &bra, nil
+}

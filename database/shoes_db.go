@@ -54,3 +54,25 @@ func DeleteShoes(id int) (*shoe.Shoes, error) {
 
 	return &sepatu, nil
 }
+
+func ShoesByBrandID(id int) (*[]shoe.Shoes, error) {
+
+	var sho []shoe.Shoes
+
+	if err := config.DB.Where("brand_id = ?", id).Find(&sho).Error; err != nil {
+		return &[]shoe.Shoes{}, err
+	}
+
+	return &sho, nil
+}
+
+func ShoesByTypeID(id int) (*[]shoe.Shoes, error) {
+
+	var sho []shoe.Shoes
+
+	if err := config.DB.Where("shoes_type_id = ?", id).Find(&sho).Error; err != nil {
+		return &[]shoe.Shoes{}, err
+	}
+
+	return &sho, nil
+}

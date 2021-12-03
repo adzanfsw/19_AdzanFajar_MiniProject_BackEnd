@@ -25,3 +25,14 @@ func GetShoesType() (*[]shoes.ShoesType, error) {
 
 	return &tipe, nil
 }
+
+func ShoesTypeID(id int) (*shoes.ShoesType, error) {
+
+	var tip shoes.ShoesType
+
+	if err := config.DB.Where("id = ?", id).First(&tip).Error; err != nil {
+		return &shoes.ShoesType{}, err
+	}
+
+	return &tip, nil
+}

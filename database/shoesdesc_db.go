@@ -25,3 +25,14 @@ func GetShoesDesc() (*[]shoes.ShoesDescription, error) {
 
 	return &desc, nil
 }
+
+func DescByShoesID(id int) (*[]shoes.ShoesDescription, error) {
+
+	var des []shoes.ShoesDescription
+
+	if err := config.DB.Where("shoes_id = ?", id).Find(&des).Error; err != nil {
+		return &[]shoes.ShoesDescription{}, err
+	}
+
+	return &des, nil
+}

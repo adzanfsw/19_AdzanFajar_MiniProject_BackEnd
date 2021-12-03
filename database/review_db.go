@@ -33,3 +33,47 @@ func UpdateReview(id int, re review.Review) (*review.Review, error) {
 
 	return &re, nil
 }
+
+func ReviewByID(id int) (*[]review.Review, error) {
+
+	var revie []review.Review
+
+	if err := config.DB.Where("id = ?", id).Find(&revie).Error; err != nil {
+		return &[]review.Review{}, err
+	}
+
+	return &revie, nil
+}
+
+func ReviewByShoesID(id int) (*[]review.Review, error) {
+
+	var revie []review.Review
+
+	if err := config.DB.Where("shoes_id = ?", id).Find(&revie).Error; err != nil {
+		return &[]review.Review{}, err
+	}
+
+	return &revie, nil
+}
+
+func ReviewByRating(id int) (*[]review.Review, error) {
+
+	var revie []review.Review
+
+	if err := config.DB.Where("rating = ?", id).Find(&revie).Error; err != nil {
+		return &[]review.Review{}, err
+	}
+
+	return &revie, nil
+}
+
+func ReviewByUserID(id int) (*[]review.Review, error) {
+
+	var revie []review.Review
+
+	if err := config.DB.Where("user_id = ?", id).Find(&revie).Error; err != nil {
+		return &[]review.Review{}, err
+	}
+
+	return &revie, nil
+}

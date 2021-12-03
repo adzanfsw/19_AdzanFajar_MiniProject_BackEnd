@@ -34,8 +34,8 @@ func RouteShoes() *echo.Echo {
 	e.POST("/api/wishlist/add", controller.AddWishController)
 	e.POST("/api/reviews/add", controller.AddReviewController)
 
-	jwtAuth.GET("/api/shoes", controller.GetShoesController)
-	jwtAuth.GET("/api/shoes/:id", controller.ShoesbyIDController)
+	e.GET("/api/shoes", controller.GetShoesController)
+	e.GET("/api/shoes/:id", controller.ShoesbyIDController)
 
 	jwtAuth.GET("/api/users", controller.GetUsersController)
 	jwtAuth.GET("/api/users/:id", controller.UserbyIDController)
@@ -44,7 +44,19 @@ func RouteShoes() *echo.Echo {
 	e.GET("/api/shoes-type", controller.GetShoesTypeController)
 	e.GET("/api/shoes-desc", controller.GetShoesDescController)
 
+	e.GET("/api/shoes/brand/:id", controller.ShoesbyBrandController)
+	e.GET("/api/shoes/type/:id", controller.ShoesbyTypeController)
+	e.GET("/api/shoes/desc/:id", controller.DescbyShoesIDController)
+
 	e.GET("/api/reviews", controller.GetReviewsController)
+	e.GET("/api/review/:id", controller.GetReviewsIDController)
+	e.GET("/api/review/shoes-id/:id", controller.GetReviewsbyShoesIDController)
+	e.GET("/api/review/rating/:id", controller.GetReviewsbyRatingController)
+	e.GET("/api/review/user-id/:id", controller.GetReviewsbyUserIDController)
+
+	e.GET("/api/wishlists", controller.GetWishController)
+	e.GET("/api/wishlist/user-id/:id", controller.GetWishbyUserIDController)
+	e.GET("/api/wishlist/shoes-id/:id", controller.GetWishbyShoesIDController)
 
 	basicAuth.PUT("/api/shoes/update/:id", controller.UpdateShoesController)
 	basicAuth.PUT("/api/users/update/:id", controller.UpdateUsersController)

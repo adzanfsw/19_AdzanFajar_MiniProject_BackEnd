@@ -4,6 +4,7 @@ import (
 	"justrun/database"
 	"justrun/model/shoes"
 	"net/http"
+	"strconv"
 
 	"github.com/labstack/echo/v4"
 )
@@ -41,5 +42,26 @@ func GetShoesBrandController(echoContext echo.Context) error {
 	return echoContext.JSON(http.StatusOK, map[string]interface{}{
 		"status":      "Success",
 		"shoes brand": merk,
+	})
+}
+
+func ShoesbyBrandController(echoContext echo.Context) error {
+
+	id, _ := strconv.Atoi(echoContext.Param("id"))
+
+	shoes, err := database.ShoesByBrandID(id)
+	brand, err := database.ShoesBrandID(id)
+
+	if err != nil {
+		return echoContext.JSON(http.StatusInternalServerError, map[string]interface{}{
+			"status":   "err",
+			"messages": err,
+		})
+	}
+
+	return echoContext.JSON(http.StatusOK, map[string]interface{}{
+		"brand":  brand,
+		"shoe":   shoes,
+		"status": "Success",
 	})
 }

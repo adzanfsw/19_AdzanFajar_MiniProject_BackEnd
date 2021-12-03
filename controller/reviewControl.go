@@ -65,3 +65,79 @@ func UpdateReviewController(echoContext echo.Context) error {
 		"data":   result,
 	})
 }
+
+func GetReviewsIDController(echoContext echo.Context) error {
+
+	id, _ := strconv.Atoi(echoContext.Param("id"))
+
+	re, err := database.ReviewByID(id)
+
+	if err != nil {
+		return echoContext.JSON(http.StatusInternalServerError, map[string]interface{}{
+			"status":   "err",
+			"messages": err,
+		})
+	}
+
+	return echoContext.JSON(http.StatusOK, map[string]interface{}{
+		"status": "Success",
+		"review": re,
+	})
+}
+
+func GetReviewsbyShoesIDController(echoContext echo.Context) error {
+
+	id, _ := strconv.Atoi(echoContext.Param("id"))
+
+	re, err := database.ReviewByShoesID(id)
+
+	if err != nil {
+		return echoContext.JSON(http.StatusInternalServerError, map[string]interface{}{
+			"status":   "err",
+			"messages": err,
+		})
+	}
+
+	return echoContext.JSON(http.StatusOK, map[string]interface{}{
+		"status": "Success",
+		"review": re,
+	})
+}
+
+func GetReviewsbyRatingController(echoContext echo.Context) error {
+
+	id, _ := strconv.Atoi(echoContext.Param("id"))
+
+	re, err := database.ReviewByRating(id)
+
+	if err != nil {
+		return echoContext.JSON(http.StatusInternalServerError, map[string]interface{}{
+			"status":   "err",
+			"messages": err,
+		})
+	}
+
+	return echoContext.JSON(http.StatusOK, map[string]interface{}{
+		"status": "Success",
+		"review": re,
+	})
+}
+
+func GetReviewsbyUserIDController(echoContext echo.Context) error {
+
+	id, _ := strconv.Atoi(echoContext.Param("id"))
+
+	re, err := database.ReviewByUserID(id)
+
+	if err != nil {
+		return echoContext.JSON(http.StatusInternalServerError, map[string]interface{}{
+			"status":   "err",
+			"messages": err,
+		})
+	}
+
+	return echoContext.JSON(http.StatusOK, map[string]interface{}{
+		"status": "Success",
+		"review": re,
+	})
+}
