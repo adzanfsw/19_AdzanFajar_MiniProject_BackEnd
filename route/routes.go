@@ -41,7 +41,7 @@ func RouteShoes() *echo.Echo {
 	jwtAuth.GET("/api/users/:id", controller.UserbyIDController)
 
 	e.GET("/api/shoes-brand", controller.GetShoesBrandController)
-	e.GET("/api/shoes-type", controller.GetShoesTypeController)
+	// e.GET("/api/shoes-type", controller.GetShoesTypeController)
 	// e.GET("/api/shoes-desc", controller.GetShoesDescController)
 
 	e.GET("/api/shoes/brand/:id", controller.ShoesbyBrandController)
