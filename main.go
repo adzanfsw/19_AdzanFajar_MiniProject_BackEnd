@@ -7,7 +7,7 @@ import (
 
 func main() {
 
-	config.InitDB()
+	config.InitDB("justrun")
 	config.AutoMigrate()
 
 	e := route.RouteShoes()
