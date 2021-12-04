@@ -42,7 +42,7 @@ func RouteShoes() *echo.Echo {
 
 	e.GET("/api/shoes-brand", controller.GetShoesBrandController)
 	e.GET("/api/shoes-type", controller.GetShoesTypeController)
-	// e.GET("/api/shoes-desc", controller.GetShoesDescController)
+	e.GET("/api/shoes-desc", controller.GetShoesDescController)
 
 	e.GET("/api/shoes/brand/:id", controller.ShoesbyBrandController)
 	e.GET("/api/shoes/type/:id", controller.ShoesbyTypeController)
